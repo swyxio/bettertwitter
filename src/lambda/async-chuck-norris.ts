@@ -2,7 +2,8 @@
 // https://github.com/netlify/netlify-lambda/issues/43#issuecomment-444618311
 
 import fetch from 'node-fetch';
-export async function handler(event, context) {
+import { Context } from 'aws-lambda';
+export async function handler(event: any, context: Context) {
   try {
     const response = await fetch('https://api.chucknorris.io/jokes/random');
     if (!response.ok) {

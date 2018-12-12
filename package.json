@@ -3,10 +3,17 @@
   "version": "0.4.0",
   "private": true,
   "dependencies": {
+    "@swyx/hooks": "^0.0.3",
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.12",
+    "@types/node-fetch": "^2.1.4",
+    "@types/react": "^16.7.13",
+    "@types/react-dom": "^16.0.11",
     "node-fetch": "^2.3.0",
-    "react": "^16.6.3",
-    "react-dom": "^16.6.3",
-    "react-scripts": "^2.1.1"
+    "react": "^16.7.0-alpha.2",
+    "react-dom": "^16.7.0-alpha.2",
+    "react-scripts": "^2.1.1",
+    "typescript": "^3.2.2"
   },
   "scripts": {
     "start": "run-p start:**",
@@ -29,6 +36,8 @@
   ],
   "devDependencies": {
     "@babel/plugin-transform-object-assign": "^7.0.0",
+    "@babel/preset-typescript": "^7.1.0",
+    "@types/aws-lambda": "^8.10.15",
     "babel-loader": "^8.0.4",
     "http-proxy-middleware": "^0.19.0",
     "netlify-lambda": "^1.1.0",
