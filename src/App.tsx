@@ -229,6 +229,7 @@ export default styled(App)`
 
   main {
     max-width: 500px;
+    width: 90vw;
     display: grid;
   }
 
