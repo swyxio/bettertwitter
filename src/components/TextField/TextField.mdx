@@ -1,0 +1,28 @@
+---
+name: Text Field
+route: /text
+---
+
+import { Playground, PropsTable } from 'docz';
+import TextField from './index';
+
+## TextField usage
+
+This is an input field for the app that allows entry
+
+<Playground>
+  username
+  <TextField  fieldName="from" />
+  <TextField  fieldName="to" />
+  dates
+  <TextField  fieldName="since" placeholder="2018-12-28" />
+  <TextField  fieldName="until" placeholder="2018-12-28" />
+
+general search
+
+  <TextField  />
+</Playground>
+
+## Props Table
+
+<PropsTable of={TextField} />

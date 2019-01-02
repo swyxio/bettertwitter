@@ -1,0 +1,20 @@
+---
+name: Number Field
+route: /number
+---
+
+import { Playground, PropsTable } from 'docz';
+import NumberField from './index';
+
+## NumberField usage
+
+this field accepts a number and styles inactive if 0
+
+<Playground>
+  <NumberField label="min_retweets" onChange={v => console.log('rts', v)} />
+  <NumberField label="min_faves" onChange={v => console.log('faves', v)} />
+</Playground>
+
+## props table
+
+<PropsTable of={NumberField} />

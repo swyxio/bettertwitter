@@ -1,0 +1,38 @@
+---
+name: Filter Field
+route: /filter
+---
+
+import { Playground, PropsTable } from 'docz';
+import FilterField from './index';
+
+## FilterField usage
+
+This is an input field for the app that allows entry
+
+<Playground>
+  {() => {
+    const [state, setState] = React.useState('inactive');
+    const [state2, setState2] = React.useState('inactive');
+    return (
+      <div>
+        <FilterField 
+          onChange={setState2} 
+          filterType="verified" 
+          fieldState={state2}
+        />
+        <FilterField 
+          onChange={setState} 
+          filterType="images" 
+          fieldState={state}
+        />
+      </div>
+    );
+
+}}
+
+</Playground>
+
+## Props Table
+
+<PropsTable of={FilterField} />

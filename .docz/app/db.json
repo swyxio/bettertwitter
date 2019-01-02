@@ -1,0 +1,95 @@
+{
+  "config": {
+    "title": "React Lambda",
+    "description": "My awesome app using docz",
+    "menu": [],
+    "ordering": "descending",
+    "version": "0.4.0",
+    "repository": null,
+    "native": false,
+    "codeSandbox": true,
+    "themeConfig": {
+      "mode": "dark"
+    },
+    "typescript": true
+  },
+  "entries": {
+    "src/components/FilterField/FilterField.mdx": {
+      "name": "Filter Field",
+      "route": "/filter",
+      "id": "44800a6f479aa0172a23dec2168d37e8",
+      "filepath": "src/components/FilterField/FilterField.mdx",
+      "link": null,
+      "slug": "src-components-filter-field-filter-field",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 2,
+          "slug": "filterfield-usage",
+          "value": "FilterField usage"
+        },
+        {
+          "depth": 2,
+          "slug": "props-table",
+          "value": "Props Table"
+        }
+      ]
+    },
+    "src/components/NumberField/NumberField.mdx": {
+      "name": "Number Field",
+      "route": "/number",
+      "id": "317e30110bbec7c25ccd1a79ee5eb472",
+      "filepath": "src/components/NumberField/NumberField.mdx",
+      "link": null,
+      "slug": "src-components-number-field-number-field",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 2,
+          "slug": "numberfield-usage",
+          "value": "NumberField usage"
+        },
+        {
+          "depth": 2,
+          "slug": "props-table",
+          "value": "props table"
+        }
+      ]
+    },
+    "src/components/OrContainer/OrContainer.mdx": {
+      "id": "a0c205144c070290b57f314ab406ec5a",
+      "filepath": "src/components/OrContainer/OrContainer.mdx",
+      "link": null,
+      "slug": "src-components-or-container-or-container",
+      "route": "/src-components-or-container-or-container",
+      "name": "Or container",
+      "order": 0,
+      "menu": null,
+      "headings": []
+    },
+    "src/components/TextField/TextField.mdx": {
+      "name": "Text Field",
+      "route": "/text",
+      "id": "fd865d667c51e997d5ed05dc297ba636",
+      "filepath": "src/components/TextField/TextField.mdx",
+      "link": null,
+      "slug": "src-components-text-field-text-field",
+      "order": 0,
+      "menu": null,
+      "headings": [
+        {
+          "depth": 2,
+          "slug": "textfield-usage",
+          "value": "TextField usage"
+        },
+        {
+          "depth": 2,
+          "slug": "props-table",
+          "value": "Props Table"
+        }
+      ]
+    }
+  }
+}

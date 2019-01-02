@@ -1,4 +1,5 @@
 {
+  "extends": "./paths.json",
   "compilerOptions": {
     "target": "es5",
     "allowJs": true,
@@ -8,11 +9,11 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "lib": ["es6", "dom"],
+    "lib": ["es6", "es7", "dom"],
     "jsx": "preserve"
   },
   "exclude": ["src/setupProxy.js", "src/lambda"],
