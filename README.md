@@ -17,6 +17,7 @@ This is a better twitter search UI for power users. This helps you build queries
   - persist choices to cookies
   - put state in URL to make it sharable/bookmarkable
   - recent searches
+  - document what each filter does and how useful it is. Tooltip?
 - Harder
   - advanced design refactoring
   - autocomplete usernames based on logged-in account's follows
