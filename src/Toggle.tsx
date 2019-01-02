@@ -25,7 +25,5 @@ function Toggle({ className, children, onClick, isOn }: ToggleProps) {
 export default styled(Toggle)`
   padding: 10px;
   display: inline-flex;
-  border: 1px solid
-    ${(props: { isOn: boolean }) => (props.isOn ? 'green' : 'blue')};
   color: ${(props: { isOn: boolean }) => (props.isOn ? 'green' : 'blue')};
 `;

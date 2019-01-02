@@ -96,14 +96,14 @@ function App({ className }: { className: string }) {
         <TextField {...userTo} label="User" fieldName="to" />
         <TextField
           {...datesSince}
-          label="Dates"
-          fieldName="since"
+          // label="Dates"
+          fieldName="Since"
           placeholder="YYYY-MM-DD"
         >
           <button onClick={handleDate(datesSince, today)}>Today </button>
           <button onClick={handleDate(datesSince, mthago)}>1m </button>
           <button onClick={handleDate(datesSince, mthago3)}>3m</button>
-          <button onClick={handleDate(datesSince, yrago)}>1yr </button>
+          {/* <button onClick={handleDate(datesSince, yrago)}>1yr </button> */}
           ago
         </TextField>
 
@@ -122,14 +122,14 @@ function App({ className }: { className: string }) {
             )
           }
           {...datesUntil}
-          label="Dates"
-          fieldName="until"
+          // label="Dates"
+          fieldName="Until"
           placeholder="YYYY-MM-DD"
         >
           <button onClick={handleDate(datesUntil, today)}>Today</button>
           <button onClick={handleDate(datesUntil, mthago)}>1m</button>
           <button onClick={handleDate(datesUntil, mthago3)}>3m</button>
-          <button onClick={handleDate(datesUntil, yrago)}>1yr</button>
+          {/* <button onClick={handleDate(datesUntil, yrago)}>1yr</button> */}
           ago
         </TextField>
         <div id="filters">
@@ -250,13 +250,7 @@ export default styled(App)`
     }
   }
 
-  #filters {
-    border: 1px solid blue;
-    padding: 10px;
-  }
   #quality {
-    border: 1px solid green;
-    padding: 10px;
     margin-bottom: 10px;
   }
 `;
