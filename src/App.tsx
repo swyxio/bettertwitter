@@ -178,6 +178,7 @@ function App({ className }: { className: string }) {
               Send ideas/Check out the todo/wishlist here.
             </a>
           </pre>
+          Bouquets and brickbats to <a href="https://twitter.com/swyx">@swyx</a>
         </p>
       </main>
     </div>
