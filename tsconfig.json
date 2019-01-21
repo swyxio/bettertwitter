@@ -13,9 +13,18 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "lib": ["es6", "es7", "dom"],
+    "lib": [
+      "es6",
+      "es7",
+      "dom"
+    ],
     "jsx": "preserve"
   },
-  "exclude": ["src/setupProxy.js", "src/lambda"],
-  "include": ["src"]
+  "exclude": [
+    "src/setupProxy.js",
+    "src/lambda"
+  ],
+  "include": [
+    "src"
+  ]
 }
