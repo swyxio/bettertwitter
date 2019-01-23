@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useInput } from '@swyx/hooks';
-
+import './patch';
 // import { useLoading } from '@swyx/hooks';
 import TextField from 'components/TextField';
 import NumberField from 'components/NumberField';
@@ -37,11 +37,16 @@ function pivot<T>(arr: (T & IndexObject)[]) {
   return ans as { [K in keyof T]: T[K] };
 }
 
+function useMyThing() {
+  const [foo, setFoo] = useState({ foo: 'bar' });
+  React.useDebugValue(foo.foo);
+  return [foo, setFoo];
+}
 function App({ className }: { className: string }) {
   const [seeFollow, setseeFollow] = useState(true);
   const [minRTs, setminRTs] = useState(0);
   const [minLikes, setminLikes] = useState(0);
-
+  const [a, setA] = useMyThing();
   const { ...search } = useInput('');
   const { ...userFrom } = useInput('', () => seeFollow && setseeFollow(false));
   const { ...userTo } = useInput('');
@@ -157,7 +162,9 @@ function App({ className }: { className: string }) {
           <em>leaving blank is ok</em>
           <TextField {...search} placeholder={'search...'} />
 
-          <button onClick={submit}>Open search results</button>
+          <button type="submit" onClick={submit}>
+            Open search results
+          </button>
           <p>
             <em>Tips:</em>
             <ul>
@@ -217,7 +224,8 @@ function linkComposer(
   const followLink = seeFollow ? 's=follows&' : '';
   if (minLikes > 0) final = final.concat(`min_faves:${minLikes} `);
   if (minRTs > 0) final = final.concat(`min_retweets:${minRTs} `);
-  return `https://mobile.twitter.com/search?${followLink}src=typd&f=live&q=${encodeURIComponent(
+  const useMobileOrNot = seeFollow ? '' : 'mobile.';
+  return `https://${useMobileOrNot}twitter.com/search?${followLink}src=typd&f=live&q=${encodeURIComponent(
     final
   )}`;
 }
