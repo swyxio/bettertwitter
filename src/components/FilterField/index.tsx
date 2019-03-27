@@ -1,5 +1,5 @@
-import React, { ReactNode } from 'react';
-import styled from 'styled-components';
+import React, { ReactNode } from 'react'
+import styled from 'styled-components'
 
 export enum FilterTypes {
   media = 'media',
@@ -14,58 +14,51 @@ export enum FilterTypes {
   retweets = 'retweets',
   nativeretweets = 'nativeretweets'
 }
-export type FieldStateType = 'inactive' | 'filterFor' | 'filterOut';
+export type FieldStateType = 'inactive' | 'filterFor' | 'filterOut'
 interface MyProps {
   /** Label for filter
    * @default ''
    * */
-  label?: string;
+  label?: string
   /** State of the inputfield */
-  fieldState: FieldStateType;
+  fieldState: FieldStateType
   /** The valid boolean filter types from Twitter */
-  filterType: FilterTypes;
+  filterType: FilterTypes
   /** I will pass you the next state which you can set to fieldState */
-  onChange?: (value: FieldStateType) => void;
-  children?: ReactNode;
+  onChange?: (value: FieldStateType) => void
+  children?: ReactNode
 }
 
 const Styled = styled.div`
   padding: 10px;
   display: inline-flex;
-  border: 1px solid
-    ${(props: { fieldStateColor: string }) => props.fieldStateColor};
+  border: 1px solid ${(props: { fieldStateColor: string }) => props.fieldStateColor};
   color: ${(props: { fieldStateColor: string }) => props.fieldStateColor};
-`;
+`
 
 const StateMachine = {
   inactive: 'filterFor',
   filterFor: 'filterOut',
   filterOut: 'inactive'
-};
+}
 
 /**
  * Filter field
  */
 export default function FilterField(props: MyProps) {
-  const {
-    fieldState,
-    filterType,
-    label = '',
-    onChange = () => {},
-    children
-  } = props;
+  const { fieldState, filterType, label = '', onChange = () => {}, children } = props
   const fieldStateColor: string = {
     inactive: 'grey',
     filterFor: 'lightgreen',
     filterOut: 'red'
-  }[fieldState];
+  }[fieldState]
   const emoji: string = {
     inactive: '☐',
     filterFor: '✓',
     filterOut: '✖'
-  }[fieldState];
+  }[fieldState]
 
-  const onClick = () => onChange(StateMachine[fieldState] as FieldStateType);
+  const onClick = () => onChange(StateMachine[fieldState] as FieldStateType)
   return (
     <Styled fieldStateColor={fieldStateColor} onClick={onClick}>
       {label}
@@ -73,5 +66,5 @@ export default function FilterField(props: MyProps) {
       <span>{filterType}</span>
       {children}
     </Styled>
-  );
+  )
 }
