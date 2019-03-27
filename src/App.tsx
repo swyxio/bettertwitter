@@ -38,7 +38,8 @@ function App({ className }: { className: string }) {
 
   const filters = Object.keys(FilterTypes).map(v => useFilter(v as FilterTypes))
 
-  const submit = () =>
+  const submit = (e: React.FormEvent<HTMLFormElement>) => {
+    if (e) e.preventDefault()
     window.open(
       linkComposer(
         {
@@ -54,6 +55,7 @@ function App({ className }: { className: string }) {
         minRTs
       )
     )
+  }
 
   const today = new Date()
   let yrago = new Date()
@@ -63,91 +65,105 @@ function App({ className }: { className: string }) {
   let mthago3 = new Date()
   mthago3 = new Date(mthago3.setMonth(mthago3.getMonth() - 3)) // subtract 3mth;
 
-  const handleDate = (dateField: { setValue: Function }, newDate: Date) => () =>
+  const handleDate = (dateField: { setValue: Function }, newDate: Date) => (e: React.MouseEvent<HTMLButtonElement>) =>
+    void e.preventDefault() ||
+    // void console.log('handling date') ||
     dateField.setValue(newDate.toISOString().slice(0, 10))
 
   return (
     <div className={className}>
       <main>
         <h1> Better Twitter Search </h1>
-        <div style={{ display: 'flex' }}>
-          <Toggle isOn={seeFollow} onClick={v => void userFrom.resetValue() || setseeFollow(v)}>
-            People You Follow
-          </Toggle>
-          <TextField {...userFrom} label="User" fieldName="from" />
-        </div>
-        <TextField {...userTo} label="User" fieldName="to" />
-        <TextField {...datesSince} fieldName="Since" placeholder="YYYY-MM-DD">
-          <button onClick={handleDate(datesSince, today)}>Today </button>
-          <button onClick={handleDate(datesSince, mthago)}>1m </button>
-          <button onClick={handleDate(datesSince, mthago3)}>3m</button>
-          ago
-        </TextField>
+        <form onSubmit={submit}>
+          <div style={{ display: 'flex' }}>
+            <Toggle isOn={seeFollow} onClick={v => void userFrom.resetValue() || setseeFollow(v)}>
+              People You Follow
+            </Toggle>
+            <TextField {...userFrom} label="User" fieldName="from" />
+          </div>
+          <TextField {...userTo} label="User" fieldName="to" />
+          <TextField {...datesSince} fieldName="Since" placeholder="YYYY-MM-DD">
+            <button type="button" onClick={handleDate(datesSince, today)}>
+              Today{' '}
+            </button>
+            <button type="button" onClick={handleDate(datesSince, mthago)}>
+              1m{' '}
+            </button>
+            <button type="button" onClick={handleDate(datesSince, mthago3)}>
+              3m
+            </button>
+            ago
+          </TextField>
 
-        <TextField
-          invalidWarning={
-            datesSince.value && datesUntil.value && datesSince.value > datesUntil.value ? (
-              <div>
-                <pre>Since</pre>
-                should come before
-                <pre>Until</pre>
-              </div>
-            ) : (
-              undefined
-            )
-          }
-          {...datesUntil}
-          fieldName="Until"
-          placeholder="YYYY-MM-DD"
-        >
-          <button onClick={handleDate(datesUntil, today)}>Today</button>
-          <button onClick={handleDate(datesUntil, mthago)}>1m</button>
-          <button onClick={handleDate(datesUntil, mthago3)}>3m</button>
-          ago
-        </TextField>
-        <div id="filters">
-          <details>
-            <summary>
-              <strong>Filters</strong>
-            </summary>
-            {filters.map(x => x.component)}
-          </details>
-        </div>
-        <div id="quality">
-          <details>
-            <summary>
-              <strong>Quality</strong>
-            </summary>
-            <NumberField label="min_retweets" onChange={setminRTs} />
-            <NumberField label="min_faves" onChange={setminLikes} />
-          </details>
-        </div>
+          <TextField
+            invalidWarning={
+              datesSince.value && datesUntil.value && datesSince.value > datesUntil.value ? (
+                <div>
+                  <pre>Since</pre>
+                  should come before
+                  <pre>Until</pre>
+                </div>
+              ) : (
+                undefined
+              )
+            }
+            {...datesUntil}
+            fieldName="Until"
+            placeholder="YYYY-MM-DD"
+          >
+            <button type="button" onClick={handleDate(datesUntil, today)}>
+              Today
+            </button>
+            <button type="button" onClick={handleDate(datesUntil, mthago)}>
+              1m
+            </button>
+            <button type="button" onClick={handleDate(datesUntil, mthago3)}>
+              3m
+            </button>
+            ago
+          </TextField>
+          <div id="filters">
+            <details>
+              <summary>
+                <strong>Filters</strong>
+              </summary>
+              {filters.map(x => x.component)}
+            </details>
+          </div>
+          <div id="quality">
+            <details>
+              <summary>
+                <strong>Quality</strong>
+              </summary>
+              <NumberField label="min_retweets" onChange={setminRTs} />
+              <NumberField label="min_faves" onChange={setminLikes} />
+            </details>
+          </div>
 
-        <div id="highlight">
-          <h3>Search Text </h3>
-          <em>leaving blank is ok</em>
-          <TextField {...search} placeholder={'search...'} />
+          <div id="highlight">
+            <h3>Search Text </h3>
+            <em>leaving blank is ok</em>
+            <TextField {...search} placeholder={'search...'} />
 
-          <button type="submit" onClick={submit}>
-            Open search results
-          </button>
-          <p>
-            <em>Tips:</em>
-          </p>
-          <ul>
-            <li>Dont forget you can search "exact quotes", @usernames or #hashtags</li>
-            <li>Minus Operator e.g. `-RT` or `beer -root`</li>
-            <li>OR Operator e.g. `#Emmys OR #Emmys2015`</li>
-          </ul>
-        </div>
+            <button type="submit">Open search results</button>
+            <p>
+              <em>Tips:</em>
+            </p>
+            <ul>
+              <li>Dont forget you can search "exact quotes", @usernames or #hashtags</li>
+              <li>Minus Operator e.g. `-RT` or `beer -root`</li>
+              <li>OR Operator e.g. `#Emmys OR #Emmys2015`</li>
+            </ul>
+          </div>
 
-        <div>
-          <pre>This app is definitely a work in progress. </pre>
-          <pre>
-            <a href="https://github.com/sw-yx/bettertwitter">Send ideas/Check out the todo/wishlist here.</a>
-          </pre>
-          Bouquets and brickbats to <a href="https://twitter.com/swyx">@swyx</a>
-        </div>
+          <div>
+            <pre>This app is definitely a work in progress. </pre>
+            <pre>
+              <a href="https://github.com/sw-yx/bettertwitter">Send ideas/Check out the todo/wishlist here.</a>
+            </pre>
+            Bouquets and brickbats to <a href="https://twitter.com/swyx">@swyx</a>
+          </div>
+        </form>
       </main>
     </div>
   )
@@ -183,7 +199,6 @@ function linkComposer(
   if (seeFollow) final = final.concat(`filter:follows `)
   if (minLikes > 0) final = final.concat(`min_faves:${minLikes} `)
   if (minRTs > 0) final = final.concat(`min_retweets:${minRTs} `)
-  console.log({ final, seeFollow })
   return `https://mobile.twitter.com/search?src=typd&f=live&q=${encodeURIComponent(final)}`
 }
 
