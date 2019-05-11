@@ -26,8 +26,10 @@ This is a better twitter search UI for power users. This helps you build queries
 - Hard/Maybe never
   - search logged-in user's lists
   - load in iframe on desktop?
+ 
 
 ## Non Search opportunities
 
 - recommended unfollows
 - limited, sorted daily content
+- immutable draft url's https://twitter.com/rektide/status/1127360848329084928
