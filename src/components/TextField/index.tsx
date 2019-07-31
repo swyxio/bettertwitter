@@ -34,7 +34,7 @@ export default function TextField(props: MyProps) {
         * this label is red when it is invalid and blue when is valid 
         * and isInvalid={!!invalidWarning}
         */}
-      <label for={fieldName}>
+      <label labelfor={fieldName}>
         {label}
       </label>
       <input id={fieldName} value={value} onChange={onChange} placeholder={placeholder} />

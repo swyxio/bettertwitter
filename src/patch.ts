@@ -7,5 +7,6 @@ declare module 'react' {
   ): void;
   interface HTMLAttributes<T> extends DOMAttributes<T> {
     for?: string
+    labelfor?: string
   }
 }

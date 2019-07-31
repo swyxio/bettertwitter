@@ -21,7 +21,7 @@ export default function NumberField(props: MyProps) {
   return (
     // has value -> green otherwise grey
     <>
-      <label for={fieldName}>{label}</label>
+      <label labelfor={fieldName}>{label}</label>
       <input id={fieldName} min="0" type="number" {...{ value, onChange }} />
       <div className="form-control-extras">
         <button onClick={() => setValue('0')}> Reset </button>
