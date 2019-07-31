@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react'
-import styled from 'styled-components'
 
 export enum FilterTypes {
   media = 'media',
@@ -29,13 +28,6 @@ interface MyProps {
   children?: ReactNode
 }
 
-const Styled = styled.div`
-  padding: 10px;
-  display: inline-flex;
-  border: 1px solid ${(props: { fieldStateColor: string }) => props.fieldStateColor};
-  color: ${(props: { fieldStateColor: string }) => props.fieldStateColor};
-`
-
 const StateMachine = {
   inactive: 'filterFor',
   filterFor: 'filterOut',
@@ -46,7 +38,7 @@ const StateMachine = {
  * Filter field
  */
 export default function FilterField(props: MyProps) {
-  const { fieldState, filterType, label = '', onChange = () => {}, children } = props
+  const { fieldState, filterType, label = '', onChange = () => { }, children } = props
   const fieldStateColor: string = {
     inactive: 'grey',
     filterFor: 'lightgreen',
@@ -60,11 +52,12 @@ export default function FilterField(props: MyProps) {
 
   const onClick = () => onChange(StateMachine[fieldState] as FieldStateType)
   return (
-    <Styled fieldStateColor={fieldStateColor} onClick={onClick}>
+    // the filter state color is applied to the border and the color of these filters
+    <div onClick={onClick}>
       {label}
       <span style={{ width: '2rem', height: '1rem' }}>{emoji}</span>
       <span>{filterType}</span>
       {children}
-    </Styled>
+    </div>
   )
 }

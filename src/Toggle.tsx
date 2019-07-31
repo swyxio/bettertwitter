@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 
 interface ToggleProps {
   className?: string;
@@ -9,6 +8,7 @@ interface ToggleProps {
 }
 function Toggle({ className, children, onClick, isOn }: ToggleProps) {
   return (
+    // color is green when isOn is true else is blue
     <div className={className}>
       <label>
         <input
@@ -22,8 +22,4 @@ function Toggle({ className, children, onClick, isOn }: ToggleProps) {
     </div>
   );
 }
-export default styled(Toggle)`
-  padding: 10px;
-  display: inline-flex;
-  color: ${(props: { isOn: boolean }) => (props.isOn ? 'green' : 'blue')};
-`;
+export default Toggle;

@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import styled from 'styled-components'
 import { useInput } from '@swyx/hooks'
 import './patch'
 // import { useLoading } from '@swyx/hooks';
@@ -104,8 +103,8 @@ function App({ className }: { className: string }) {
                   <pre>Until</pre>
                 </div>
               ) : (
-                undefined
-              )
+                  undefined
+                )
             }
             {...datesUntil}
             fieldName="Until"
@@ -202,35 +201,37 @@ function linkComposer(
   return `https://mobile.twitter.com/search?src=typd&f=live&q=${encodeURIComponent(final)}`
 }
 
-export default styled(App)`
-  min-height: 100vh;
-  display: grid;
-  align-items: center;
-  justify-content: center;
+// export default styled(App)`
+//   min-height: 100vh;
+//   display: grid;
+//   align-items: center;
+//   justify-content: center;
 
-  main {
-    max-width: 500px;
-    width: 90vw;
-    display: grid;
-  }
+//   main {
+//     max-width: 500px;
+//     width: 90vw;
+//     display: grid;
+//   }
 
-  #highlight {
-    border: 1px solid red;
-    padding: 10px;
-    margin-bottom: 10px;
+//   #highlight {
+//     border: 1px solid red;
+//     padding: 10px;
+//     margin-bottom: 10px;
 
-    input {
-      font-size: 1.5rem;
-    }
-    button {
-      background-color: lightgreen;
-      padding: 10px;
-      border: 3px solid black;
-      border-radius: 5px;
-    }
-  }
+//     input {
+//       font-size: 1.5rem;
+//     }
+//     button {
+//       background-color: lightgreen;
+//       padding: 10px;
+//       border: 3px solid black;
+//       border-radius: 5px;
+//     }
+//   }
 
-  #quality {
-    margin-bottom: 10px;
-  }
-`
+//   #quality {
+//     margin-bottom: 10px;
+//   }
+// `
+
+export default App;
