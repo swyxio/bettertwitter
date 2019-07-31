@@ -8,17 +8,23 @@ interface ToggleProps {
 function Toggle({ children, onClick, isOn }: ToggleProps) {
   return (
     // color is green when isOn is true else is blue
-    <div>
-      <label>
-        <input
-          type="checkbox"
-          checked={isOn}
-          onClick={() => onClick(!isOn)}
-          readOnly
-        />
-        {children}
+    <>
+      <label
+        for="iHopeThisIsTheOnlyToggle"
+      >
+        {
+          // looks like this is the label so ¯\_(ツ)_/¯
+          children
+        }
       </label>
-    </div>
+      <input
+        id="iHopeThisIsTheOnlyToggle"
+        type="checkbox"
+        checked={isOn}
+        onClick={() => onClick(!isOn)}
+        readOnly
+      />
+    </>
   );
 }
 export default Toggle;

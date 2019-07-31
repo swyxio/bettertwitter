@@ -53,9 +53,9 @@ export default function FilterField(props: MyProps) {
   const onClick = () => onChange(StateMachine[fieldState] as FieldStateType)
   return (
     // the filter state color is applied to the border and the color of these filters
-    <div onClick={onClick}>
+    <div className="filter-field" onClick={onClick}>
       {label}
-      <span>{emoji}</span>
+      <span className="filter-emoji">{emoji}</span>
       <span>{filterType}</span>
       {children}
     </div>

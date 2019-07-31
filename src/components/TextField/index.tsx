@@ -28,19 +28,17 @@ export default function TextField(props: MyProps) {
   } = props;
 
   return (
-    <div>
+    <>
       {invalidWarning}
       {/** 
         * this label is red when it is invalid and blue when is valid 
         * and isInvalid={!!invalidWarning}
         */}
-      <label>
-        <span>
-          {label} {fieldName && fieldName + ':'}
-        </span>
-        <input value={value} onChange={onChange} placeholder={placeholder} />
-        {children}
+      <label for={fieldName}>
+        {label}
       </label>
-    </div>
+      <input id={fieldName} value={value} onChange={onChange} placeholder={placeholder} />
+      <div className="form-control-extras">{children}</div>
+    </>
   );
 }

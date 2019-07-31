@@ -76,9 +76,9 @@ function App() {
       <form onSubmit={submit}>
         <Toggle isOn={seeFollow} onClick={v => void userFrom.resetValue() || setseeFollow(v)}>
           People You Follow
-            </Toggle>
-        <TextField {...userFrom} label="User" fieldName="from" />
-        <TextField {...userTo} label="User" fieldName="to" />
+        </Toggle>
+        <TextField {...userFrom} label="User to" fieldName="from" />
+        <TextField {...userTo} label="User from" fieldName="to" />
         <TextField {...datesSince} fieldName="Since" placeholder="YYYY-MM-DD">
           <button type="button" onClick={handleDate(datesSince, today)}>
             Today{' '}
@@ -89,8 +89,10 @@ function App() {
           <button type="button" onClick={handleDate(datesSince, mthago3)}>
             3m
             </button>
-          ago
-          </TextField>
+          <span>
+            ago
+          </span>
+        </TextField>
 
         <TextField
           invalidWarning={
@@ -117,32 +119,24 @@ function App() {
           <button type="button" onClick={handleDate(datesUntil, mthago3)}>
             3m
             </button>
-          ago
-          </TextField>
-        <div id="filters">
-          <details>
-            <summary>
-              <strong>Filters</strong>
-            </summary>
-            {filters.map(x => x.component)}
-          </details>
+          <span>
+            ago
+          </span>
+        </TextField>
+        <h2>Filters</h2>
+        <div className="details-content">
+          {filters.map(x => x.component)}
         </div>
-        <div id="quality">
-          <details>
-            <summary>
-              <strong>Quality</strong>
-            </summary>
-            <NumberField label="min_retweets" onChange={setminRTs} />
-            <NumberField label="min_faves" onChange={setminLikes} />
-          </details>
-        </div>
+        <h2>Quality</h2>
+
+        <NumberField fieldName="minRetweets" label="min_retweets" onChange={setminRTs} />
+        <NumberField fieldName="minFaves" label="min_faves" onChange={setminLikes} />
+        <TextField label="keyword" fieldName="searchKeyword" {...search} placeholder={'search...'} >
+          <em>leaving blank is ok</em>
+        </TextField>
+        <button type="submit">Open search results</button>
 
         <div id="highlight">
-          <h3>Search Text </h3>
-          <em>leaving blank is ok</em>
-          <TextField {...search} placeholder={'search...'} />
-
-          <button type="submit">Open search results</button>
           <p>
             <em>Tips:</em>
           </p>
@@ -153,14 +147,14 @@ function App() {
           </ul>
         </div>
 
-        <div>
-          <pre>This app is definitely a work in progress. </pre>
-          <pre>
-            <a href="https://github.com/sw-yx/bettertwitter">Send ideas/Check out the todo/wishlist here.</a>
-          </pre>
-          Bouquets and brickbats to <a href="https://twitter.com/swyx">@swyx</a>
-        </div>
       </form>
+      <section>
+        <pre>This app is definitely a work in progress. </pre>
+        <pre>
+          <a href="https://github.com/sw-yx/bettertwitter">Send ideas/Check out the todo/wishlist here.</a>
+        </pre>
+        Bouquets and brickbats to <a href="https://twitter.com/swyx">@swyx</a>
+      </section>
     </main>
   )
 }
