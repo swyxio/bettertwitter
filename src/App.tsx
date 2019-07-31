@@ -134,12 +134,9 @@ function App() {
         <TextField label="keyword" fieldName="searchKeyword" {...search} placeholder={'search...'} >
           <em>leaving blank is ok</em>
         </TextField>
-        <button type="submit">Open search results</button>
 
         <div id="highlight">
-          <p>
-            <em>Tips:</em>
-          </p>
+          <h2>Tips</h2>
           <ul>
             <li>Dont forget you can search "exact quotes", @usernames or #hashtags</li>
             <li>Minus Operator e.g. `-RT` or `beer -root`</li>
@@ -147,14 +144,15 @@ function App() {
           </ul>
         </div>
 
+        <button type="submit">Open search results</button>
       </form>
-      <section>
+      <footer>
         <pre>This app is definitely a work in progress. </pre>
         <pre>
           <a href="https://github.com/sw-yx/bettertwitter">Send ideas/Check out the todo/wishlist here.</a>
         </pre>
         Bouquets and brickbats to <a href="https://twitter.com/swyx">@swyx</a>
-      </section>
+      </footer>
     </main>
   )
 }
