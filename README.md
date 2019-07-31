@@ -38,8 +38,13 @@ This is a better twitter search UI for power users. This helps you build queries
 
 (@wgao19)
 
-Because I like the feature but I want my own styling. I can PR if swyx (upstream) likes it. 
+Because I like the feature but I want my own styling. I can PR if swyx (upstream) likes it.
 
 It looks like this:
 
 ![](https://i.imgur.com/RefVXlk.png)
+
+**bucket list**
+
+- responsive layout
+- icons
