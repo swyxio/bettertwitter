@@ -55,7 +55,7 @@ export default function FilterField(props: MyProps) {
     // the filter state color is applied to the border and the color of these filters
     <div onClick={onClick}>
       {label}
-      <span style={{ width: '2rem', height: '1rem' }}>{emoji}</span>
+      <span>{emoji}</span>
       <span>{filterType}</span>
       {children}
     </div>

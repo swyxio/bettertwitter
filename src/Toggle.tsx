@@ -1,15 +1,14 @@
 import React from 'react';
 
 interface ToggleProps {
-  className?: string;
   children: React.ReactNode;
   onClick: (nextState: boolean) => void;
   isOn: boolean;
 }
-function Toggle({ className, children, onClick, isOn }: ToggleProps) {
+function Toggle({ children, onClick, isOn }: ToggleProps) {
   return (
     // color is green when isOn is true else is blue
-    <div className={className}>
+    <div>
       <label>
         <input
           type="checkbox"
