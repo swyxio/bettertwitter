@@ -48,3 +48,4 @@ It looks like this:
 
 - responsive layout
 - icons
+- fix the validation warning
