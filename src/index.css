@@ -20,8 +20,6 @@ h2 {
   margin-bottom: 0;
 }
 
-
-
 code, pre {
   font-family: 'IBM Plex Mono', monospace;
 }
@@ -98,6 +96,7 @@ button[type="submit"] {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 2rem 0 0;
+  border: 2px solid var(--border-color);
 }
 
 button:hover, button:focus, input:focus {
