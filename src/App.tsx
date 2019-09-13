@@ -77,8 +77,8 @@ function App() {
         <Toggle isOn={seeFollow} onClick={v => void userFrom.resetValue() || setseeFollow(v)}>
           People You Follow
         </Toggle>
-        <TextField {...userFrom} label="User to" fieldName="from" />
-        <TextField {...userTo} label="User from" fieldName="to" />
+        <TextField {...userFrom} label="User from" fieldName="from" />
+        <TextField {...userTo} label="User to" fieldName="to" />
         <TextField {...datesSince} fieldName="Since" placeholder="YYYY-MM-DD">
           <button type="button" onClick={handleDate(datesSince, today)}>
             Today{' '}
