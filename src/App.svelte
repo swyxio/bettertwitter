@@ -37,15 +37,22 @@
 <style global lang="scss">
 
   h1 {
+    margin-block-start: 0;
     color: #ff3e00;
     text-transform: uppercase;
     font-size: 4em;
     font-weight: 100;
   }
+  @media only screen and (max-width: 600px) {
+    h1 {
+      font-size: 1.5em;
+    }
+  }
 
   form, .grid3 {
     display: grid;
-    grid-template-columns: minmax(min-content,1fr) 3fr minmax(min-content,1fr);
+    /* grid-template-columns: minmax(min-content,1fr) 3fr minmax(min-content,1fr); */
+    grid-template-columns: 1fr 3fr 1fr;
     grid-column-gap: 1rem;
     grid-row-gap: .5rem;
     width: 100%;
@@ -88,17 +95,26 @@
     margin-top: 4rem;
   }
   footer, main {
-    margin: 0 auto;
-    width: 700px;
+    padding: 1rem;
   }
-  #searchKeyword {
-    --border-color: #5614B0;
-    font-size: 200%;
+  @media only screen and (min-width: 1000px) {
+    footer, main {
+      padding: 3rem;
+    }
+    #searchKeyword {
+      --border-color: #5614B0;
+      font-size: 200%;
+    }
+    button[type="submit"] {
+      font-size: 200%;
+    }
   }
   button[type="submit"] {
     --border-color: darkgreen;
-    font-size: 200%;
     cursor: pointer;
+    background: #d9a7c7;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #fffcdc, #d9a7c7);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #fffcdc, #d9a7c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   }
 </style>
 

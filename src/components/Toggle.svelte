@@ -13,6 +13,10 @@
   settings.subscribe((x) => {
     if (typeof x.seeFollow !== 'undefined') {
       isChecked = x.seeFollow;
+    } else {
+      if (settings.from && settings.from.length > 1) {
+        isChecked = false
+      }
     }
   });
 </script>
