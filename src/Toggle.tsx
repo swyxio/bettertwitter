@@ -1,29 +1,30 @@
 import React from 'react';
-import styled from 'styled-components';
 
 interface ToggleProps {
-  className?: string;
   children: React.ReactNode;
   onClick: (nextState: boolean) => void;
   isOn: boolean;
 }
-function Toggle({ className, children, onClick, isOn }: ToggleProps) {
+function Toggle({ children, onClick, isOn }: ToggleProps) {
   return (
-    <div className={className}>
-      <label>
-        <input
-          type="checkbox"
-          checked={isOn}
-          onClick={() => onClick(!isOn)}
-          readOnly
-        />
-        {children}
+    // color is green when isOn is true else is blue
+    <>
+      <label
+        labelfor="iHopeThisIsTheOnlyToggle"
+      >
+        {
+          // looks like this is the label so ¯\_(ツ)_/¯
+          children
+        }
       </label>
-    </div>
+      <input
+        id="iHopeThisIsTheOnlyToggle"
+        type="checkbox"
+        checked={isOn}
+        onClick={() => onClick(!isOn)}
+        readOnly
+      />
+    </>
   );
 }
-export default styled(Toggle)`
-  padding: 10px;
-  display: inline-flex;
-  color: ${(props: { isOn: boolean }) => (props.isOn ? 'green' : 'blue')};
-`;
+export default Toggle;

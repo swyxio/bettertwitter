@@ -1,5 +1,4 @@
 import React, { ReactNode } from 'react';
-import styled from 'styled-components';
 
 interface MyProps {
   /** label of the input
@@ -14,15 +13,6 @@ interface MyProps {
   children?: ReactNode;
 }
 
-const Styled = styled.label`
-  padding: 10px;
-  display: flex;
-  color: ${(props: { isInvalid?: boolean }) =>
-    props.isInvalid ? 'red' : 'blue'};
-  input {
-    margin-right: 10px;
-  }
-`;
 /**
  * Filter field
  */
@@ -38,15 +28,17 @@ export default function TextField(props: MyProps) {
   } = props;
 
   return (
-    <div>
+    <>
       {invalidWarning}
-      <Styled isInvalid={!!invalidWarning}>
-        <span>
-          {label} {fieldName && fieldName + ':'}
-        </span>
-        <input value={value} onChange={onChange} placeholder={placeholder} />
-        {children}
-      </Styled>
-    </div>
+      {/** 
+        * this label is red when it is invalid and blue when is valid 
+        * and isInvalid={!!invalidWarning}
+        */}
+      <label labelfor={fieldName}>
+        {label}
+      </label>
+      <input id={fieldName} value={value} onChange={onChange} placeholder={placeholder} />
+      <div className="form-control-extras">{children}</div>
+    </>
   );
 }

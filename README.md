@@ -33,3 +33,19 @@ This is a better twitter search UI for power users. This helps you build queries
 - recommended unfollows
 - limited, sorted daily content
 - immutable draft url's https://twitter.com/rektide/status/1127360848329084928
+
+## About this fork
+
+(@wgao19)
+
+Because I like the feature but I want my own styling. to swyx: I can PR if you like it
+
+It looks like this:
+
+![](https://i.imgur.com/RefVXlk.png)
+
+**bucket list**
+
+- responsive layout
+- icons
+- fix the validation warning
