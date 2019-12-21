@@ -4,6 +4,7 @@
   import FilterField from './components/FilterField.svelte';
   import NumberField from './components/NumberField.svelte';
   import TextField from './components/TextField.svelte';
+  import DateField from './components/DateField.svelte';
   import Toggle from './components/Toggle.svelte';
   const filters = [
     "media",
@@ -18,39 +19,22 @@
     "retweets",
     "nativeretweets"
   ]
+  // $: {
+  //   console.log({ $tweetURL, $settings })
+  // }
   const submit = () => {
-    // const temp = get(settings);
-    console.log({ $settings, $tweetURL });
+    window.open($tweetURL)
   };
 
-  const today = new Date()
-  let yrago = new Date()
-  yrago = new Date(yrago.setMonth(yrago.getMonth() - 12)) // subtract 1yr
-  let mthago = new Date()
-  mthago = new Date(mthago.setMonth(mthago.getMonth() - 1)) // subtract 1mth;
-  let mthago3 = new Date()
-  mthago3 = new Date(mthago3.setMonth(mthago3.getMonth() - 3)) // subtract 3mth;
-  const handleDate = (fieldName, setToDate) => () => {
-    settings.update(x => {
-      x[fieldName] = setToDate.toISOString().slice(0, 10)
-      return x
-    })
-  }
   let showInvalidWarning = false
   settings.subscribe(x => {
-    const datesSince = x["Since"]
-    const datesUntil = x["Until"]
+    const datesSince = x["since"]
+    const datesUntil = x["until"]
     showInvalidWarning = datesSince && datesUntil && datesSince > datesUntil
   })
 </script>
 
-<style>
-  main {
-    text-align: center;
-    padding: 1em;
-    max-width: 240px;
-    margin: 0 auto;
-  }
+<style global lang="scss">
 
   h1 {
     color: #ff3e00;
@@ -59,45 +43,106 @@
     font-weight: 100;
   }
 
-  @media (min-width: 640px) {
-    main {
-      max-width: none;
-    }
+  form, .grid3 {
+    display: grid;
+    grid-template-columns: minmax(min-content,1fr) 3fr minmax(min-content,1fr);
+    grid-column-gap: 1rem;
+    grid-row-gap: .5rem;
+    width: 100%;
+    align-items: center;
+  }
+  :root {
+    --border-color: #444;
+  }
+  button, input {
+    background: #fff;
+    outline: none;
+    /* border: .12em solid #444;
+    box-shadow: 2px 2px 0 0 #444; */
+    border: .12em solid var(--border-color);
+    box-shadow: var(--border-color) 2px 2px 0 0;
+    padding: .5em;
+    transition: all .1s ease-in;
+  }
+
+  * {
+    border-radius: 2px;
+  }
+
+  .details-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  }
+  h2 {
+    display: inline
+  }
+  form>#highlight, 
+  form>.details-content, 
+  form>button[type=submit], 
+  form>h2,
+  .span3,
+  details {
+    grid-column: 1/span 3;
+  }
+  footer {
+    margin-top: 4rem;
+  }
+  footer, main {
+    margin: 0 auto;
+    width: 700px;
+  }
+  #searchKeyword {
+    --border-color: #5614B0;
+    font-size: 200%;
+  }
+  button[type="submit"] {
+    --border-color: darkgreen;
+    font-size: 200%;
+    cursor: pointer;
   }
 </style>
 
 <main>
-  <h1>Better Twitter Search</h1>
+  <h1>Better Twitter</h1>
   <form on:submit|preventDefault="{submit}">
-    <Toggle>People You Follow</Toggle>
-    <TextField label="User from" fieldName="from" />
+    <TextField label="User from" fieldName="from">
+    </TextField>
+    <div></div>
+    <Toggle>Tweets From People You Follow</Toggle>
+    <div></div>
     <TextField label="User to" fieldName="to" />
-    <TextField fieldName="Since" placeholder="YYYY-MM-DD">
-      <button type="button" on:click={handleDate("Since", today)}>Today</button>
-      <button type="button" on:click={handleDate("Since", mthago)}>1m</button>
-      <button type="button" on:click={handleDate("Since", mthago3)}>3m</button>
-      <span>ago</span>
-    </TextField>
-    <TextField fieldName="Until" placeholder="YYYY-MM-DD">
-      {#if showInvalidWarning}
-      <div>⚠️ Warning: <pre>Since</pre>should come before<pre>Until</pre></div>
-      {/if}
-      <button type="button" on:click={handleDate("Until", today)}>Today</button>
-      <button type="button" on:click={handleDate("Until", mthago)}>1m</button>
-      <button type="button" on:click={handleDate("Until", mthago3)}>3m</button>
-      <span>ago</span>
-    </TextField>
-    <h2>Filters</h2>
-    <div className="details-content">
-      {#each filters as filter}
-        <FilterField fieldType={filter} />
-      {/each}
-    </div>
-    <h2>Quality</h2>
 
-
-    <NumberField fieldName="minRetweets" label="min_retweets" />
-    <NumberField fieldName="minFaves" label="min_faves" />
+    <details>
+      <summary>
+        <h2>Dates</h2>
+      </summary>
+      <div class="grid3">
+        <DateField label="Since" fieldName="since"/>
+        {#if showInvalidWarning}
+        <div class="span3">⚠️ Warning: <pre>Since</pre>should come before<pre>Until</pre></div>
+        {/if}
+        <DateField label="Until" fieldName="until"/>
+      </div>
+    </details>
+    <details>
+      <summary>
+        <h2>Filters</h2>
+      </summary>
+      <div class="details-content">
+        {#each filters as filter}
+          <FilterField fieldType={filter} />
+        {/each}
+      </div>
+    </details>
+    <details>
+      <summary>
+        <h2>Quality</h2>
+      </summary>
+      <div class="grid3">
+      <NumberField fieldName="min_retweets" label="min_retweets" />
+      <NumberField fieldName="min_faves" label="min_faves" />
+      </div>
+    </details>
     <TextField label="keyword" fieldName="searchKeyword" placeholder={'search...'}>
       <em>leaving blank is ok</em>
     </TextField> 

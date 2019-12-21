@@ -1,27 +1,12 @@
 <script>
   import { settings } from 'store';
-  // export let invalidWarning;
-  // export let fieldState;
-  // export let fieldName;
   export let fieldType;
-  // export let label = '';
-  // export let placeholder;
-  // export let value;
-  // export let onChange;
-  // $: {
-  //   onChange(value);
-  // }
   let fieldState = 'inactive';
   const StateMachine = {
     inactive: 'filterFor',
     filterFor: 'filterOut',
     filterOut: 'inactive'
   };
-  // const fieldStateColor = {
-  //   inactive: 'grey',
-  //   filterFor: 'lightgreen',
-  //   filterOut: 'red'
-  // }[fieldState];
   $: emoji = {
     inactive: '☐',
     filterFor: '✓',
@@ -36,6 +21,19 @@
     });
   };
 </script>
+<style>
+  .filter-field {
+    user-select: none;
+    padding: .5em;
+    cursor: pointer;
+    margin-right: .5em;
+  }
+  .filter-emoji {
+    display: inline-block;
+    width: 1em;
+    text-align: center;
+  }
+</style>
 
 <div class="filter-field" on:click="{onClick}">
   <!-- {label} -->

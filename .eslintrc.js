@@ -20,7 +20,11 @@ module.exports = {
     "jest": true
   },
   "rules": {
-    "no-debugger": 0,
+    // swyx rules
+    "global-require": 0,
+    "no-use-before-define": 0,
+    "import/no-extraneous-dependencies": 0, // for svelte
+    // wesbos rules
     "no-alert": 0,
     "no-await-in-loop": 0,
     "no-return-assign": [
@@ -64,7 +68,6 @@ module.exports = {
     ],
     "no-console": 0,
     "import/prefer-default-export": 0,
-    "import/no-extraneous-dependencies": 0,
     "import": 0,
     "func-names": 0,
     "space-before-function-paren": 0,

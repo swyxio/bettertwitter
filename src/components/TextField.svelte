@@ -1,26 +1,14 @@
 <script>
-  import { settings } from 'store';
-  // export let invalidWarning;
   export let fieldName;
-  export let label = '';
-  export let placeholder;
-  export let value;
-  // export let onChange;
   if (!fieldName) throw new Error('must supply fieldName to TextField');
-  $: {
-    settings.update((x) => {
-      x[fieldName] = value;
-      return x;
-    });
-  }
-  settings.subscribe((x) => (value = x[fieldName]));
+  export let label;
+  export let placeholder = '';
+  import { settings } from 'store';
 </script>
 
-<div>
-  <!-- {invalidWarning} -->
-  <label labelfor="{fieldName}">{label}</label>
-  <input id="{fieldName}" bind:value {placeholder} />
-  <div class="form-control-extras">
-    <slot> </slot>
-  </div>
+<label for="{fieldName}">{label}</label>
+<!-- 2 way binding value to *store* -->
+<input id="{fieldName}" bind:value={$settings[fieldName]} {placeholder} />
+<div class="form-control-extras">
+  <slot> </slot>
 </div>

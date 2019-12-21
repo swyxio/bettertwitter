@@ -1,0 +1,48 @@
+<script>
+  import { settings } from 'store';
+  // export let invalidWarning;
+  export let fieldName;
+  export let label = '';
+  export let value = '';
+  // export let onChange;
+  if (!fieldName) throw new Error('must supply fieldName to TextField');
+  $: {
+    settings.update((x) => {
+      x[fieldName] = value;
+      return x;
+    });
+  }
+  settings.subscribe((x) => (value = x[fieldName]));
+
+  const today = new Date()
+  let yrago = new Date()
+  yrago = new Date(yrago.setMonth(yrago.getMonth() - 12)) // subtract 1yr
+  let mthago = new Date()
+  mthago = new Date(mthago.setMonth(mthago.getMonth() - 1)) // subtract 1mth;
+  let mthago3 = new Date()
+  mthago3 = new Date(mthago3.setMonth(mthago3.getMonth() - 3)) // subtract 3mth;
+  const handleDate = (fieldName, setToDate) => () => {
+    settings.update(x => {
+      x[fieldName] = setToDate.toISOString().slice(0, 10)
+      return x
+    })
+  }
+</script>
+
+<style>
+  .form-control-extras {
+    --border-color: rgba(0,0,0,0.1);
+  }
+</style>
+
+
+<!-- {invalidWarning} -->
+<label for="{fieldName}">{label}</label>
+<input type="date" id="{fieldName}" bind:value  placeholder="YYYY-MM-DD" />
+<div class="form-control-extras">
+  <button type="button" on:click={handleDate(fieldName, today)}>0d</button>
+  <button type="button" on:click={handleDate(fieldName, mthago)}>1m</button>
+  <button type="button" on:click={handleDate(fieldName, mthago3)}>3m</button>
+  <span>ago</span>
+  <slot></slot>
+</div>

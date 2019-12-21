@@ -17,8 +17,15 @@
   });
 </script>
 
+<style>
+  label {
+    display:inline;
+    cursor: pointer
+  }
+</style>
+
 <div>
-  <label labelfor="iHopeThisIsTheOnlyToggle">
+  <label for="iHopeThisIsTheOnlyToggle">
     <slot></slot>
   </label>
   <input id="iHopeThisIsTheOnlyToggle" type="checkbox" bind:checked="{isChecked}" on:click="{handleClick}" readOnly />
