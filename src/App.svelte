@@ -53,13 +53,9 @@
   form, .grid3 {
     margin: 0 auto;
     display: grid;
-    /* grid-template-columns: minmax(min-content,1fr) 3fr minmax(min-content,1fr); */
-    /* grid-template-columns: 60px calc(100vw - 200px) 60px; */
-    grid-template-columns: 60px minmax(auto, 200px) 60px;
+    grid-template-columns: 1fr auto 1fr;
     grid-column-gap: 1rem;
     grid-row-gap: .5rem;
-    /* width: 100%; */
-    /* max-width: calc(100vw - 100px); */
     align-items: center;
   }
   :root {
