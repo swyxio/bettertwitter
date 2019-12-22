@@ -49,17 +49,25 @@
     }
   }
 
+
   form, .grid3 {
+    margin: 0 auto;
     display: grid;
     /* grid-template-columns: minmax(min-content,1fr) 3fr minmax(min-content,1fr); */
-    grid-template-columns: 1fr 3fr 1fr;
+    /* grid-template-columns: 60px calc(100vw - 200px) 60px; */
+    grid-template-columns: 60px minmax(auto, 200px) 60px;
     grid-column-gap: 1rem;
     grid-row-gap: .5rem;
-    width: 100%;
+    /* width: 100%; */
+    /* max-width: calc(100vw - 100px); */
     align-items: center;
   }
   :root {
     --border-color: #444;
+  }
+
+  input[type='text'], input[type='number'], input[type='date'] {
+    width: 100%
   }
   button, input {
     background: #fff;
@@ -78,7 +86,13 @@
 
   .details-content {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 100%;
+  }
+  @media only screen and (max-width: 600px) {
+    .details-content {
+      grid-template-columns: 1fr 1fr;
+    }
   }
   h2 {
     display: inline
@@ -91,11 +105,12 @@
   details {
     grid-column: 1/span 3;
   }
-  footer {
-    margin-top: 4rem;
+  footer * {
+    white-space: pre-wrap;
   }
   footer, main {
     padding: 1rem;
+    /* width: 100%; */
   }
   @media only screen and (min-width: 1000px) {
     footer, main {
@@ -178,7 +193,7 @@
     <button type="submit">Open search results</button>
   </form>
   <footer>
-      <pre>This app is definitely a work in progress. </pre>
+    <pre>This app is definitely a work in progress. </pre>
     <pre>
       <a href="https://github.com/sw-yx/bettertwitter">Send ideas/Check out the todo/wishlist here.</a>
     </pre>

@@ -1,19 +1,8 @@
 <script>
   import { settings } from 'store';
-  // export let invalidWarning;
   export let fieldName;
   export let label = '';
-  export let value = '';
-  // export let onChange;
   if (!fieldName) throw new Error('must supply fieldName to TextField');
-  $: {
-    settings.update((x) => {
-      x[fieldName] = value;
-      return x;
-    });
-  }
-  settings.subscribe((x) => (value = x[fieldName]));
-
   const today = new Date()
   let yrago = new Date()
   yrago = new Date(yrago.setMonth(yrago.getMonth() - 12)) // subtract 1yr
@@ -38,7 +27,7 @@
 
 <!-- {invalidWarning} -->
 <label for="{fieldName}">{label}</label>
-<input type="date" id="{fieldName}" bind:value  placeholder="YYYY-MM-DD" />
+<input type="date" id="{fieldName}" bind:value={$settings[fieldName]}  placeholder="YYYY-MM-DD" />
 <div class="form-control-extras">
   <button type="button" on:click={handleDate(fieldName, today)}>0d</button>
   <button type="button" on:click={handleDate(fieldName, mthago)}>1m</button>
