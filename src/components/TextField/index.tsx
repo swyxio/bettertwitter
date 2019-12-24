@@ -42,7 +42,7 @@ export default function TextField(props: MyProps) {
         </label>
       }
       <input className={inputSize} id={fieldName} value={value} onChange={onChange} placeholder={placeholder} />
-      <div className="form-control-extras">{children}</div>
+      {children && <div className="form-control-extras">{children}</div>}
     </>
   );
 }

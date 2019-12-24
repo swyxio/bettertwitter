@@ -8,7 +8,7 @@ interface ToggleProps {
 function Toggle({ children, onClick, isOn }: ToggleProps) {
   return (
     // color is green when isOn is true else is blue
-    <>
+    <div className="toggle">
       <label
         labelfor="iHopeThisIsTheOnlyToggle"
       >
@@ -24,7 +24,7 @@ function Toggle({ children, onClick, isOn }: ToggleProps) {
         onClick={() => onClick(!isOn)}
         readOnly
       />
-    </>
+    </div>
   );
 }
 export default Toggle;

@@ -5,7 +5,7 @@ import './patch'
 import TextField from 'components/TextField'
 import NumberField from 'components/NumberField'
 import FilterField, { FilterTypes, FieldStateType } from 'components/FilterField'
-import Toggle from './Toggle'
+import Toggle from './components/Toggle'
 import './index.css';
 function useFilter(type: FilterTypes) {
   const [FilterState, setFilterState] = useState<FieldStateType>('inactive')
@@ -71,92 +71,106 @@ function App() {
     dateField.setValue(newDate.toISOString().slice(0, 10))
 
   return (
-    <main>
-      <h1> Better Twitter Search </h1>
-      <form onSubmit={submit}>
-        <h2>Keyword</h2>
-        <TextField inputSize="expand" fieldName="searchKeyword" {...search} placeholder={'search...'} >
-          <em>leaving blank is ok</em>
-        </TextField>
-        <h2>User</h2>
-        <Toggle isOn={seeFollow} onClick={v => void userFrom.resetValue() || setseeFollow(v)}>
-          People You Follow
+    <>
+      <header>
+        <h1> Better Twitter Search </h1>
+      </header>
+      <main>
+        <form onSubmit={submit}>
+          <h2>Keyword</h2>
+          <TextField inputSize="expand" fieldName="searchKeyword" {...search} placeholder={'search...'} >
+            <em>leaving blank is ok</em>
+          </TextField>
+          <h2>User</h2>
+          <Toggle isOn={seeFollow} onClick={v => void userFrom.resetValue() || setseeFollow(v)}>
+            People You Follow
         </Toggle>
-        <TextField {...userFrom} label="User from" fieldName="from" />
-        <TextField {...userTo} label="User to" fieldName="to" />
-        <TextField {...datesSince} fieldName="Since" placeholder="YYYY-MM-DD">
-          <button type="button" onClick={handleDate(datesSince, today)}>
-            Today{' '}
-          </button>
-          <button type="button" onClick={handleDate(datesSince, mthago)}>
-            1m{' '}
-          </button>
-          <button type="button" onClick={handleDate(datesSince, mthago3)}>
-            3m
+          <TextField {...userFrom} label="User from" fieldName="from" />
+          <TextField {...userTo} label="User to" fieldName="to" />
+          <TextField {...datesSince} label="Since" fieldName="Since" placeholder="YYYY-MM-DD">
+            <div className="btn-group">
+              <button className="tiny-btn" type="button" onClick={handleDate(datesSince, today)}>
+                Today{' '}
+              </button>
+              <button className="tiny-btn" type="button" onClick={handleDate(datesSince, mthago)}>
+                1m{' '}
+              </button>
+              <button className="tiny-btn" type="button" onClick={handleDate(datesSince, mthago3)}>
+                3m
             </button>
-          <span>
-            ago
+              <span>
+                ago
           </span>
-        </TextField>
+            </div>
+          </TextField>
 
-        <TextField
-          invalidWarning={
-            datesSince.value && datesUntil.value && datesSince.value > datesUntil.value ? (
-              <div>
-                <pre>Since</pre>
-                should come before
+          <TextField
+            invalidWarning={
+              datesSince.value && datesUntil.value && datesSince.value > datesUntil.value ? (
+                <div>
+                  <pre>Since</pre>
+                  should come before
                   <pre>Until</pre>
-              </div>
-            ) : (
-                undefined
-              )
-          }
-          {...datesUntil}
-          fieldName="Until"
-          placeholder="YYYY-MM-DD"
-        >
-          <button type="button" onClick={handleDate(datesUntil, today)}>
-            Today
+                </div>
+              ) : (
+                  undefined
+                )
+            }
+            {...datesUntil}
+            label="Until"
+            fieldName="Until"
+            placeholder="YYYY-MM-DD"
+          >
+            <div
+              className="btn-group"
+            >
+              <button className="tiny-btn" type="button" onClick={handleDate(datesUntil, today)}>
+                Today
             </button>
-          <button type="button" onClick={handleDate(datesUntil, mthago)}>
-            1m
+              <button className="tiny-btn" type="button" onClick={handleDate(datesUntil, mthago)}>
+                1m
             </button>
-          <button type="button" onClick={handleDate(datesUntil, mthago3)}>
-            3m
+              <button className="tiny-btn" type="button" onClick={handleDate(datesUntil, mthago3)}>
+                3m
             </button>
-          <span>
-            ago
+              <span>
+                ago
           </span>
-        </TextField>
-        <h2>Filters</h2>
-        <div className="details-content">
-          {filters.map(x => x.component)}
-        </div>
-        <h2>Quality</h2>
+            </div>
+          </TextField>
+          <h2>Filters</h2>
+          <div className="details-content">
+            {filters.map(x => x.component)}
+          </div>
+          <h2>Quality</h2>
 
-        <NumberField fieldName="minRetweets" label="min_retweets" onChange={setminRTs} />
-        <NumberField fieldName="minFaves" label="min_faves" onChange={setminLikes} />
+          <NumberField fieldName="minRetweets" label="min_retweets" onChange={setminRTs} />
+          <NumberField fieldName="minFaves" label="min_faves" onChange={setminLikes} />
 
 
-        <div id="highlight">
-          <h2>Tips</h2>
-          <ul>
-            <li>Dont forget you can search "exact quotes", @usernames or #hashtags</li>
-            <li>Minus Operator e.g. `-RT` or `beer -root`</li>
-            <li>OR Operator e.g. `#Emmys OR #Emmys2015`</li>
-          </ul>
-        </div>
+          <div id="highlight">
+            <h2>Tips</h2>
+            <ul>
+              <li>Dont forget you can search "exact quotes", @usernames or #hashtags</li>
+              <li>Minus Operator e.g. `-RT` or `beer -root`</li>
+              <li>OR Operator e.g. `#Emmys OR #Emmys2015`</li>
+            </ul>
+          </div>
 
-        <button type="submit">Open search results</button>
-      </form>
+          <button type="submit">Open search results</button>
+        </form>
+      </main>
       <footer>
-        <pre>This app is definitely a work in progress. </pre>
-        <pre>
+        <p>This app is definitely a work in progress. </p>
+        <p>
           <a href="https://github.com/sw-yx/bettertwitter">Send ideas/Check out the todo/wishlist here.</a>
-        </pre>
-        Bouquets and brickbats to <a href="https://twitter.com/swyx">@swyx</a>
+        </p>
+        <p>
+
+          Bouquets and brickbats to <a href="https://twitter.com/swyx">@swyx</a>
+        </p>
       </footer>
-    </main >
+    </>
   )
 }
 
