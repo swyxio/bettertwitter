@@ -37,7 +37,7 @@ export default function TextField(props: MyProps) {
         * and isInvalid={!!invalidWarning}
         */}
       {
-        label && <label labelfor={fieldName}>
+        label && <label for={fieldName}>
           {label}
         </label>
       }

@@ -10,7 +10,7 @@ function Toggle({ children, onClick, isOn }: ToggleProps) {
     // color is green when isOn is true else is blue
     <div className="toggle">
       <label
-        labelfor="iHopeThisIsTheOnlyToggle"
+        for="iHopeThisIsTheOnlyToggle"
       >
         {
           // looks like this is the label so ¯\_(ツ)_/¯
