@@ -124,6 +124,10 @@ input.expand {
   font-size: 1.5rem;
 }
 
+input[type="checkbox"] {
+  justify-self: flex-start;
+}
+
 * {
   border-radius: 2px;
 }
