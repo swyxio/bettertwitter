@@ -118,6 +118,12 @@ input, button {
   transition: all .1s ease-in;
 }
 
+/** make input expand the whole grid col if it's .expand */
+input.expand {
+  grid-column: 1 / -1;
+  font-size: 1.5rem;
+}
+
 * {
   border-radius: 2px;
 }

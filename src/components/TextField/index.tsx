@@ -5,6 +5,7 @@ interface MyProps {
    * @default ''
    * */
   label?: string;
+  inputSize?: 'expand';
   fieldName?: string;
   placeholder?: string;
   value: string;
@@ -24,7 +25,8 @@ export default function TextField(props: MyProps) {
     value,
     onChange,
     invalidWarning,
-    children
+    children,
+    inputSize = '',
   } = props;
 
   return (
@@ -34,10 +36,12 @@ export default function TextField(props: MyProps) {
         * this label is red when it is invalid and blue when is valid 
         * and isInvalid={!!invalidWarning}
         */}
-      <label labelfor={fieldName}>
-        {label}
-      </label>
-      <input id={fieldName} value={value} onChange={onChange} placeholder={placeholder} />
+      {
+        label && <label labelfor={fieldName}>
+          {label}
+        </label>
+      }
+      <input className={inputSize} id={fieldName} value={value} onChange={onChange} placeholder={placeholder} />
       <div className="form-control-extras">{children}</div>
     </>
   );

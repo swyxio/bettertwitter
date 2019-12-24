@@ -74,6 +74,11 @@ function App() {
     <main>
       <h1> Better Twitter Search </h1>
       <form onSubmit={submit}>
+        <h2>Keyword</h2>
+        <TextField inputSize="expand" fieldName="searchKeyword" {...search} placeholder={'search...'} >
+          <em>leaving blank is ok</em>
+        </TextField>
+        <h2>User</h2>
         <Toggle isOn={seeFollow} onClick={v => void userFrom.resetValue() || setseeFollow(v)}>
           People You Follow
         </Toggle>
@@ -131,9 +136,7 @@ function App() {
 
         <NumberField fieldName="minRetweets" label="min_retweets" onChange={setminRTs} />
         <NumberField fieldName="minFaves" label="min_faves" onChange={setminLikes} />
-        <TextField label="keyword" fieldName="searchKeyword" {...search} placeholder={'search...'} >
-          <em>leaving blank is ok</em>
-        </TextField>
+
 
         <div id="highlight">
           <h2>Tips</h2>
@@ -153,7 +156,7 @@ function App() {
         </pre>
         Bouquets and brickbats to <a href="https://twitter.com/swyx">@swyx</a>
       </footer>
-    </main>
+    </main >
   )
 }
 
