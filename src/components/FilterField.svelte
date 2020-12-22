@@ -1,7 +1,9 @@
 <script>
   import { settings } from 'store';
+
+
   export let fieldType;
-  let fieldState = 'inactive';
+  let fieldState = $settings.filters[fieldType] || 'inactive';
   const StateMachine = {
     inactive: 'filterFor',
     filterFor: 'filterOut',
@@ -15,10 +17,7 @@
 
   const onClick = () => {
     fieldState = StateMachine[fieldState];
-    settings.update((x) => {
-      x.filters[fieldType] = fieldState === 'inactive' ? undefined : fieldState;
-      return x;
-    });
+    $settings.filters[fieldType] = fieldState;
   };
 </script>
 <style>

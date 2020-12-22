@@ -1,11 +1,11 @@
 <script>
-  import { get } from 'svelte/store';
-  import { settings, tweetURL } from 'store';
-  import FilterField from './components/FilterField.svelte';
-  import NumberField from './components/NumberField.svelte';
-  import TextField from './components/TextField.svelte';
-  import DateField from './components/DateField.svelte';
-  import Toggle from './components/Toggle.svelte';
+  import { settings,tweetURL } from 'store';
+import DateField from './components/DateField.svelte';
+import FilterField from './components/FilterField.svelte';
+import NumberField from './components/NumberField.svelte';
+import TextField from './components/TextField.svelte';
+import Toggle from './components/Toggle.svelte';
+
   const filters = [
     "media",
     "images",
@@ -154,7 +154,7 @@
     </details>
     <details>
       <summary>
-        <h2>Filters</h2>
+        <h2>Filters (RTs & Replies off by default)</h2>
       </summary>
       <div class="details-content">
         {#each filters as filter}
