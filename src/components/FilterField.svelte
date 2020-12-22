@@ -1,7 +1,7 @@
 <script>
   import { settings } from 'store';
   export let fieldType;
-  let fieldState = 'inactive';
+  let fieldState = ['replies', 'retweets'].includes(fieldType) ? 'filterOut' : 'inactive';
   const StateMachine = {
     inactive: 'filterFor',
     filterFor: 'filterOut',
