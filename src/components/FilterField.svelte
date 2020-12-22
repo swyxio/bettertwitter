@@ -2,6 +2,7 @@
   import { settings } from 'store';
 
 
+
   export let fieldType;
   let fieldState = $settings.filters[fieldType] || 'inactive';
   const StateMachine = {
