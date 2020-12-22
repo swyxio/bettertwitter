@@ -17,6 +17,7 @@
     "safe",
     "verified",
     "retweets",
+    "replies",
     "nativeretweets"
   ]
   // $: {
