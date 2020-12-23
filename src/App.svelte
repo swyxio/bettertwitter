@@ -16,7 +16,7 @@ import Toggle from './components/Toggle.svelte';
     "links",
     "safe",
     "verified",
-    "retweets",
+    // "retweets", // this seems to just be an alias for "RTs" - no longer useful in modern twitter
     "replies",
     "nativeretweets"
   ]
