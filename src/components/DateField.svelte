@@ -16,6 +16,12 @@
       return x
     })
   }
+  const clearDate = (fieldName) => () => {
+    settings.update(x => {
+      x[fieldName] = undefined
+      return x
+    })
+  }
 </script>
 
 <style>
@@ -29,9 +35,9 @@
 <label for="{fieldName}">{label}</label>
 <input type="date" id="{fieldName}" bind:value={$settings[fieldName]}  placeholder="YYYY-MM-DD" />
 <div class="form-control-extras">
-  <button type="button" on:click={handleDate(fieldName, today)}>0d</button>
   <button type="button" on:click={handleDate(fieldName, mthago)}>1m</button>
   <button type="button" on:click={handleDate(fieldName, mthago3)}>3m</button>
   <span>ago</span>
+  <button type="button" on:click={clearDate(fieldName)}>Clear</button>
   <slot></slot>
 </div>
