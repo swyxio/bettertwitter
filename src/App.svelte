@@ -4,6 +4,7 @@
   import FilterField from './components/FilterField.svelte'
   import NumberField from './components/NumberField.svelte'
   import TextField from './components/TextField.svelte'
+  import TextFieldUsername from './components/TextFieldUsername.svelte'
   import Toggle from './components/Toggle.svelte'
   import CardToggle from './components/CardToggle.svelte'
 
@@ -150,7 +151,7 @@
 <main>
   <h1>Better Twitter</h1>
   <form on:submit|preventDefault={submit}>
-    <TextField label="User from" fieldName="from" />
+    <TextFieldUsername fieldName="from" />
     <div />
     <Toggle>Tweets From People You Follow</Toggle>
     <div />

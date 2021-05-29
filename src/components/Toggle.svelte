@@ -1,13 +1,15 @@
 <script>
   import { settings } from 'store';
   const handleClick = () => {
-    settings.update((x) => {
-      x.seeFollow = !x.seeFollow;
-      if (x.seeFollow) {
-        x['from'] = '';
-      }
-      return x;
-    });
+    $settings.seeFollow = !$settings.seeFollow
+    // settings.update((x) => {
+    //   x.seeFollow = !x.seeFollow;
+    //   console.log({x})
+    //   // if (x.seeFollow) { // this is too fancy
+    //   //   x['from'] = '';
+    //   // }
+    //   return x;
+    // });
   };
   let isChecked = false;
   settings.subscribe((x) => {
