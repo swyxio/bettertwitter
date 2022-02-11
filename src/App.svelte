@@ -196,6 +196,7 @@
       <div class="grid3">
         <NumberField fieldName="min_retweets" label="Min Retweets" />
         <NumberField fieldName="min_faves" label="Min Likes" />
+        <NumberField fieldName="min_replies" label="Min Replies" />
       </div>
     </details>
     <hr class="span3" />
