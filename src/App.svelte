@@ -20,6 +20,7 @@
     'news',
     'safe',
     'verified',
+    'blue_verified', // https://twitter.com/KetanJ0/status/1591487650812551168
     // "retweets", // this seems to just be an alias for "RTs" - no longer useful in modern twitter
     'nativeretweets',
   ]
